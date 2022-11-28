@@ -340,11 +340,11 @@ void loop()
 {
   unsigned long last_gps_read=0;
   unsigned long last_time=0,time_now=0;
-  int wp_hdg=0; // something heading
-  float wp_dist=0.0;
-  int wp_num=0;
+  int wp_hdg=0; // heading to the next waypoint, in degrees
+  float wp_dist=0.0; // distance to next waypoint
+  int wp_num=0; // number of waypoints
 
-  float igain=0.01; // i and p gain are multipliers for the rudder servo
+  float igain=0.01; // i and p gain are multipliers for the rudder servo, they fix issues
   float pgain=0.1;
   float running_err=0.0;
   int hdg_err=0;
@@ -377,8 +377,14 @@ void loop()
 
     last_time=millis();
 
+    //get external values
+    /*
+    * Grab compass value, work out the wind direction in relation to our heading, then grab out gps location and print some debug
+    * When we read the gps value we also check how close we are to our target waypoint, if we're close enough we move on to the next one.
+    * after doing this we do some stuff to make sure we arnt going to waypoints that dont exist then set our waypoint heading (wp_heading)
+    * and some other data that will be used to steer towards the waypoint
+    */
     readCompass();
-
     //state.wind_dir=getTrueWind();
     //no wind sensor, so just use a fixed wind direction
     state.wind_dir=270;
@@ -412,7 +418,12 @@ void loop()
     //no sail as we have a fixed one
 
     //rudder logic
-    // 
+    /*
+    * First we use get_hdg_diff to get work out how many degrees off the correct direction we are, this is hdg_err (heading error)
+    * next we increase the running error and clamp it, this variaby slowly increases over time so that we can reach the heading (withough this we just get closer and closer but never reach it) 
+    * then we use the heading and the error to set what position the rudder should be in, clamp it then also store that value in state for reference later (state holds all the data the arduino needs, see its definition at like 60~)
+    */
+
     hdg_err = get_hdg_diff(wp_hdg,state.heading);
 
     running_err = running_err + (float)hdg_err;
@@ -436,6 +447,12 @@ void loop()
     }
 
     rudderServo.writeMicroseconds(1500+(state.rudder*100));
+
+    // print debug info
+    /*
+    * We print debug info every certain amount of seconds (10 by default).
+    * we mostly print info about where we are and where the waypoint is
+    */
 
     if(last_telemetry+(TELEMETRY_INTERVAL*1000)<millis())
     {
