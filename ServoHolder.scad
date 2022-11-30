@@ -1,6 +1,6 @@
 $fn = 30; // number of faces in screw holes
 
-thickness = 5; // thickness
+thickness = 5; // thickness, this doesnt work
 
 // main body
 width = 70;
@@ -8,7 +8,7 @@ depth = 70;
 height = 32;
 
 // servo
-sWidth = 14;
+sWidth = 15;
 sDepth = 32;
 sHeight = 5;
 
@@ -20,7 +20,7 @@ sDiameter = 5; // screw diameter
 difference()
 {
     // main
-    cube([width, depth, 5]);    
+    cube([width, depth, thickness]);    
     
       union()
     {
@@ -38,22 +38,21 @@ difference()
         
         // screw holes
         
-        // NOTE: it might be worth getting rid of the 
-        // top lower holes, we dont need both them and 
-        // the side faces holes
-        
-        // lower left
-        translate([cWidth/2, cWidth/2+thickness, 0])
-        cylinder(h=thickness, d=sDiameter);
         // upper left
         translate([cWidth/2, width-cWidth/2, 0])
-        cylinder(h=thickness, d=sDiameter);
-        // lower right
-        translate([depth-cWidth/2, cWidth/2+thickness, 0])
         cylinder(h=thickness, d=sDiameter);
         // upper right
         translate([depth-cWidth/2, width-cWidth/2, 0])
         cylinder(h=thickness, d=sDiameter);
+        
+        /*
+        // lower right
+        translate([depth-cWidth/2, cWidth/2+thickness, 0])
+        cylinder(h=thickness, d=sDiameter);
+        // lower left
+        translate([cWidth/2, cWidth/2+thickness, 0])
+        cylinder(h=thickness, d=sDiameter);
+        */
     }
 }
 

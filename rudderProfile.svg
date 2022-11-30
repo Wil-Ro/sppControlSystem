@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="106mm"
+   height="20.5mm"
+   viewBox="0 0 106 20.5"
+   version="1.1"
+   id="svg131"
+   sodipodi:docname="rudderProfile.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs135" />
+  <sodipodi:namedview
+     id="namedview133"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.2963934"
+     inkscape:cx="302.21303"
+     inkscape:cy="-58.570104"
+     inkscape:window-width="2182"
+     inkscape:window-height="1440"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g121" />
+  <title
+     id="title89">Airfoil plot (user-000) NACA 0010 Airfoil M=0.0% P=0.0% T=10.0% by AirfoilTools.com</title>
+  <g
+     transform="translate(3,8)"
+     id="g121">
+    <path
+       fill="none"
+       stroke="#ff0000"
+       stroke-width="0.1"
+       d="M 100,-0.11 99.85,-0.12 99.38,-0.18 98.62,-0.27 97.55,-0.39 96.19,-0.54 94.55,-0.72 92.63,-0.93 90.45,-1.16 88.02,-1.41 85.36,-1.68 82.47,-1.95 79.39,-2.24 76.12,-2.54 72.7,-2.83 69.13,-3.12 65.45,-3.41 61.67,-3.69 57.82,-3.95 53.92,-4.19 50,-4.41 46.08,-4.6 42.18,-4.76 38.33,-4.88 34.55,-4.96 30.87,-5 l -3.57,0.01 -3.42,0.07 -3.27,0.11 -3.08,0.17 -2.89,0.22 -2.66,0.27 L 9.55,-3.84 7.37,-3.48 5.45,-3.07 3.81,-2.63 2.45,-2.16 1.38,-1.65 0.62,-1.13 0.15,-0.57 0,0 l 0.15,0.57 0.47,0.56 0.76,0.52 1.07,0.51 1.36,0.47 1.64,0.44 1.92,0.41 2.18,0.36 2.43,0.31 2.66,0.27 2.89,0.22 3.08,0.17 3.27,0.11 L 27.3,4.99 30.87,5 34.55,4.96 38.33,4.88 42.18,4.76 46.08,4.6 50,4.41 53.92,4.19 57.82,3.95 61.67,3.69 65.45,3.41 69.13,3.12 72.7,2.83 76.12,2.54 79.39,2.24 82.47,1.95 85.36,1.68 88.02,1.41 90.45,1.16 92.63,0.93 94.55,0.72 96.19,0.54 97.55,0.39 98.62,0.27 99.38,0.18 99.85,0.12 100,0.11"
+       id="path111" />
+  </g>
+</svg>
