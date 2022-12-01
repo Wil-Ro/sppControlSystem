@@ -16,7 +16,7 @@ Some libraries wont show up in the manager, to solve this try searching the deve
 These are the current planned steps:
 
 - [ ] Prepare Hull
-	- [ ] Carve out Electronics Box, Servo Hole and Dagger Board Hole
+  - [ ] Carve out Electronics Box, Servo Hole and Dagger Board Hole
   - [ ] Coat in PVA glue
   - [ ] Coat in Epoxy Resin
 - [ ] Create Sail
