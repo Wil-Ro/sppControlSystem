@@ -16,17 +16,18 @@ Some libraries wont show up in the manager, to solve this try searching the deve
 These are the current planned steps:
 
 - [ ] Prepare Hull
-  - [ ] Carve out Electronics Box, Servo Hole and Dagger Board Hole
+  - [x] Carve out Electronics Box, Servo Hole and Dagger Board Hole
   - [ ] Coat in PVA glue
   - [ ] Coat in Epoxy Resin
 - [ ] Create Sail
-  - [ ] Find Material
+  - [X] Find Material
   - [ ] Sew Sail
 - [ ] Create parts needed
-  - [ ] Design and print Rudder Hinge
-  - [ ] Design and print Rudder
-  - [ ] Design and Print Dagger Board
+  - [ ] Design Rudder Hinge
+  - [ ] Design Rudder
+  - [X] Design Keel and Weight
 - [ ] Build Boat
+  - [ ] Print Parts
   - [ ] Install boom and sail onto mast
   - [ ] Install electronics and Servo
 - [ ] Prepare and install code
