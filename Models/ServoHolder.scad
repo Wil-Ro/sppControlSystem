@@ -14,7 +14,9 @@ sHeight = 5;
 
 cWidth = 10; // cutout width
 
-sDiameter = 5; // screw diameter
+aDiameter = 6; // axel diameter
+
+sDiameter = 6; // screw diameter
 
 // top surface
 difference()
@@ -45,14 +47,9 @@ difference()
         translate([depth-cWidth/2, width-cWidth/2, 0])
         cylinder(h=thickness, d=sDiameter);
         
-        /*
-        // lower right
-        translate([depth-cWidth/2, cWidth/2+thickness, 0])
-        cylinder(h=thickness, d=sDiameter);
-        // lower left
-        translate([cWidth/2, cWidth/2+thickness, 0])
-        cylinder(h=thickness, d=sDiameter);
-        */
+        // rudder axel hole
+        translate([width/2, 10, 0])
+        cylinder(h = thickness, r = aDiameter/2);
     }
 }
 

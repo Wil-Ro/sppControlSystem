@@ -1,5 +1,5 @@
 $fn=64;
-peiceHeight = 100;
+peiceHeight = 65;
 peiceLength = 50;
 
 holeSize = 4;
