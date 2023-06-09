@@ -70,8 +70,9 @@ TinyGPS gps;
 #define DEBUG_CRITICAL 1 //really important messages that we don't want to ignore and are prepared to sacrifice execution speed to see
 #define DEBUG_IMPORTANT 2 //fairly important messages that we probably want to see, but might cause issues with execution speed
 #define DEBUG_MINOR 3 //less important messages that we can safely turn off to improve execution speed
+#define DEBUG_VERBOSE 4 //Dan and Rosias debug messages
 
-#define DEBUG_THRESHOLD DEBUG_MINOR //set to 0 to show no debugging messages
+#define DEBUG_THRESHOLD DEBUG_VERBOSE //set to 0 to show no debugging messages
 
 const char *ssid = "boat";
 AsyncUDP udp;
@@ -139,7 +140,7 @@ void setup()
   myDebug.begin(4800, SERIAL_8N1, 3, 1); //debug UART on GPIO 6 and 7
   say(DEBUG_MINOR, "Debug serial system set up");
 
-  say(DEBUG_CRITICAL,"Control system start up");
+  say(DEBUG_VERBOSE,"Control system start up");
 
   //required for printf  
   //but not on ESP32
@@ -238,9 +239,9 @@ int readCompass() {
   heading += low_byte;
 
 //  may need to reimplement this later  
-//   heading=heading/10;
-//   roll=roll/10;
-//   pitch=pitch/10;
+   heading=heading/10;
+   roll=roll/10;
+   pitch=pitch/10;
    
    myDebug.print("Heading = ");
    myDebug.print(heading);
@@ -261,7 +262,7 @@ int readCompass() {
 void readGPS() {
   unsigned long fix_age=9999,time,date;
 
-  say(DEBUG_MINOR,"About to read GPS");
+  say(DEBUG_VERBOSE,"About to read GPS");
   digitalWrite(GPS_ENABLE_PIN,1); //turn the GPS on
   delay(1000);
 
@@ -363,7 +364,7 @@ int get_hdg_diff(int heading1,int heading2)
 
 void loop()
 {
-  say(DEBUG_MINOR, "Entered loop");
+  say(DEBUG_VERBOSE, "Entered loop");
   unsigned long last_gps_read=0;
   unsigned long last_time=0,time_now=0;
   int wp_hdg=0;
@@ -403,20 +404,20 @@ void loop()
 
     last_time=millis();
 
-    say(DEBUG_MINOR, "reading compass");
+    say(DEBUG_VERBOSE, "reading compass");
     readCompass();
-    say(DEBUG_MINOR, "finished reading compass");
+    say(DEBUG_VERBOSE, "finished reading compass");
     //state.wind_dir=getTrueWind();        {
 
     //no wind sensor, so just use a fixed wind direction
     state.wind_dir=270;
-
+    
     relwind=mod(state.wind_dir - state.heading);
-
-    say(DEBUG_MINOR, "may read gps");
+    
+    say(DEBUG_VERBOSE, "may read gps");
     if(millis()-last_gps_read>(GPS_READ_INTERVAL*1000)||millis()<last_gps_read) //read the GPS at the specified interval or whenever the millis count wraps around 
     {
-      say(DEBUG_MINOR,"Reading GPS");
+      say(DEBUG_VERBOSE,"Reading GPS");
       readGPS();
       wp_hdg = (int) TinyGPS::course_to(state.lat, state.lon, wp_lats[wp_num],wp_lons[wp_num]);
       wp_dist = TinyGPS::distance_between(state.lat, state.lon, wp_lats[wp_num],wp_lons[wp_num]);
@@ -436,7 +437,7 @@ void loop()
       last_gps_read=millis();
     }
 
-    say(DEBUG_MINOR, "Finished possible gps read");
+    say(DEBUG_VERBOSE, "Finished possible gps read");
 
     //sail logic
     //sailLogic(relwind);
@@ -464,10 +465,10 @@ void loop()
       state.rudder=5;
     }
 
-    say(DEBUG_MINOR, "correcting rudder");
+    say(DEBUG_VERBOSE, "correcting rudder");
     rudderServo.writeMicroseconds(1500+(state.rudder*100));
 
-    say(DEBUG_MINOR, "possible telemetry incoming:");
+    say(DEBUG_VERBOSE, "possible telemetry incoming:");
     if(last_telemetry+(TELEMETRY_INTERVAL*1000)<millis())
     {
       char msgbuf[255];
@@ -546,6 +547,5 @@ void loop()
 
       last_telemetry=millis();
     }
-
   }
 }
